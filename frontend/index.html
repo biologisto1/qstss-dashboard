@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSTSS Student Growth Intelligence Dashboard — v5 Cognia Benchmarking</title>
+  <link rel="stylesheet" href="/static/styles_v5.css?v=5.2" />
+</head>
+<body>
+  <header class="hero">
+    <div class="brand-mark" aria-label="QSTSS logo mark">
+      <span>Q</span>
+      <small>STSS</small>
+    </div>
+    <div class="hero-copy">
+      <div class="eyebrow">Qatar Science & Technology Secondary School</div>
+      <h1>Student Growth Intelligence Dashboard</h1>
+      <p>Live Excel-backed stakeholder interface for progression evidence, university pathways, CAT4 growth, and Cognia-ready student outcomes. <strong style="color:#ffe8a3">v5 Cognia Benchmarking</strong></p>
+    </div>
+    <div class="hero-actions">
+      <div id="headerMeta" class="header-meta"></div>
+      <button id="refreshButton" class="ghost-btn">Refresh live data</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="control-panel surface">
+      <div class="panel-title">
+        <h2>Student Finder</h2>
+        <p>Choose from dropdowns or type a QID/name.</p>
+      </div>
+
+      <label for="cohortFilter">Cohort</label>
+      <select id="cohortFilter"><option value="">All cohorts</option></select>
+
+      <label for="qidSelect">Choose QID</label>
+      <select id="qidSelect"><option value="">Select QID</option></select>
+
+      <label for="nameSelect">Choose student name</label>
+      <select id="nameSelect"><option value="">Select student</option></select>
+
+      <label for="studentSearch">Quick search</label>
+      <input id="studentSearch" type="search" placeholder="Type QID or name" autocomplete="off" />
+
+      <div class="search-count" id="resultCount">No search yet</div>
+      <div class="results" id="results"></div>
+    </aside>
+
+    <section class="content-grid">
+      <nav class="tabs surface" aria-label="Dashboard sections">
+        <button class="tab active" data-tab="overview">Executive Overview</button>
+        <button class="tab" data-tab="profile">Student Profile</button>
+        <button class="tab" data-tab="evidence">Cognia Evidence</button>
+        <button class="tab" data-tab="quality">Data Quality</button>
+      </nav>
+
+      <section id="overview" class="tab-panel active">
+        <div id="kpiGrid" class="kpi-grid"></div>
+        <div class="two-col">
+          <article class="surface">
+            <div class="section-head">
+              <div>
+                <h2>Cohort Performance Summary</h2>
+                <p>Entry-to-exit growth and university-readiness indicators.</p>
+              </div>
+            </div>
+            <div class="table-wrap"><table id="cohortTable"><thead><tr><th>Cohort</th><th>Students</th><th>Avg Entry</th><th>Avg Exit</th><th>Avg Gain</th><th>Avg SAT</th><th>STEM Majors</th><th>Direct Admissions</th></tr></thead><tbody></tbody></table></div>
+          </article>
+          <article class="surface">
+            <h2>Destination Insights</h2>
+            <div id="destinationCharts" class="insight-stack"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="profile" class="tab-panel">
+        <article class="surface">
+          <div class="section-head">
+            <div>
+              <h2>Student Profile</h2>
+              <p id="selectedHint">Select a student from the left panel.</p>
+            </div>
+            <button id="printProfile" class="primary-btn">Print / Save PDF</button>
+          </div>
+          <div id="studentProfile" class="empty-state">No student selected.</div>
+        </article>
+      </section>
+
+      <section id="evidence" class="tab-panel">
+        <article class="surface">
+          <div class="section-head">
+            <div>
+              <h2>Cognia Evidence by Cohort</h2>
+              <p id="evidenceSubtitle">Cohort-level evidence, indicators, and diagrams calculated from the live workbook.</p>
+            </div>
+            <button id="printEvidence" class="primary-btn">Print Evidence Page</button>
+          </div>
+          <div id="evidenceContent" class="empty-state">Loading Cognia evidence...</div>
+        </article>
+      </section>
+
+      <section id="quality" class="tab-panel">
+        <article class="surface">
+          <h2>Workbook Data Quality</h2>
+          <p>These checks are calculated directly from the live workbook source.</p>
+          <div id="qualityGrid" class="quality-grid"></div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">QSTSS dashboard prototype · FastAPI + HTML/CSS/JavaScript · Live Excel source</footer>
+  <script src="/static/app_v5.js?v=5.2"></script>
+</body>
+</html>
